@@ -62,6 +62,6 @@ df = df.sort_values("Банк")
 
 df_long = df.melt(id_vars="Банк", var_name="Показатель", value_name="Значение")
 
-df_long.to_excel("banks2024_powerbi.xlsx", index=False)
+df_long.to_excel("banks2024.xlsx", index=False)
 print("Файл успешно сохранён.")
 print(df_long.head())
