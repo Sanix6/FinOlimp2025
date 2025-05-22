@@ -1,4 +1,3 @@
-import pandas as pd
 import requests
 import xml.etree.ElementTree as ET
 
@@ -11,12 +10,7 @@ def get_usd_to_kgs():
             return float(cur.find("Value").text.replace(",", "."))
     raise RuntimeError("USD курс не найден")
 
-def to_millions_str(amount_kgs, rate):
-    usd_mln = amount_kgs / rate / 1_000_000
-    return f"{usd_mln:,.2f}$ млн".replace(",", " ").replace(".", ",")
 
-def to_thousands_str(amount_kgs, rate):
-    usd_ths = amount_kgs / rate / 1_000
-    return f"{usd_ths:,.2f}$ тыс.".replace(",", " ").replace(".", ",")
+def format_thousands(value, currency_symbol):
+    return f"{round(value / 1_000):,} тыс. {currency_symbol}".replace(",", " ")
 
-usd_rate = get_usd_to_kgs()
