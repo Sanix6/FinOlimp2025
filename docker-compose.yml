@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  data-app:
+    build: .
+    container_name: data-transformer
+    volumes:
+      - .:/app
+    command: python main.py
